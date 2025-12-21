@@ -32,12 +32,12 @@ phases:
       - echo building the docker image
       - docker build -t $image_name:$tag .
       - echo "tagging the docker image"
-      - docker tag $image_name:$tag $account_id.dkr.ecr.$region.amazonaws.com/namespace/repo:latest
+      - docker tag $image_name:$tag $account_id.dkr.ecr.$region.amazonaws.com/images/repository:latest
 
   post_build:
     commands:
       - echo pushing the docker image to ECR repository
-      - docker push $account_id.dkr.ecr.$region.amazonaws.com/namespace/repo:latest
+      - docker push $account_id.dkr.ecr.$region.amazonaws.com/images/repository:latest
       - echo "Docker image pushed to ECR repository successfully"
 
 artifacts:
