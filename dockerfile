@@ -1,4 +1,4 @@
-FROM tomcat:9-jdk8-corretto-a12
+FROM tomcat:latest
 
 LABEL maintainer="dhaneeshjadhav@gmail.com"
 LABEL application="apache-tomcat"
