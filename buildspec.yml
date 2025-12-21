@@ -6,39 +6,40 @@ env:
     account_id: 978489150432
     image_name: dhaneesh
     tag: latest
-     
+
 phases:
-   install:
-     runtime-versions:
-        java: corretto11
-     commands:
+  install:
+    runtime-versions:
+      java: corretto11
+    commands:
       - echo installing the dependencies
       - echo installing the java and maven versions
       - mvn -version
       - java -version
-  
-pre_build:
-  commands:
-   - echo applying the login credentials of all service needed
-   - echo login in to ECR repository to push the docker image
-   - aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $account_id.dkr.ecr.eu-north-1.amazonaws.com
-   # command to pull the dependencies requiered to build from code artifact
-   - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token  --tool maven --domain codeartifact-domain --domain-owner $account_id --region $region --query authorizationToken --output text`
 
-build:
-  commands:
-    - echo build the war file using maven
-    - mvn clean package -s settings.xml
-    - echo building the docker image
-    - docker build -t $image_name:$tag .
-    - echo "tagging the docker image"
-    - docker tag $image_name:$tag $account_id.dkr.ecr.$region.amazonaws.com/namespace/repo:latest
+  pre_build:
+    commands:
+      - echo applying the login credentials of all service needed
+      - echo login in to ECR repository to push the docker image
+      - aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $account_id.dkr.ecr.eu-north-1.amazonaws.com
+      # command to pull the dependencies requiered to build from code artifact
+      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token  --tool maven --domain codeartifact-domain --domain-owner $account_id --region $region --query authorizationToken --output text`
 
-post_build:
-  commands:
-    - echo pushing the docker image to ECR repository
-    - docker push $account_id.dkr.ecr.$region.amazonaws.com/namespace/repo:latest
-    - echo "Docker image pushed to ECR repository successfully"
+  build:
+    commands:
+      - echo build the war file using maven
+      - mvn clean package -s settings.xml
+      - echo building the docker image
+      - docker build -t $image_name:$tag .
+      - echo "tagging the docker image"
+      - docker tag $image_name:$tag $account_id.dkr.ecr.$region.amazonaws.com/namespace/repo:latest
+
+  post_build:
+    commands:
+      - echo pushing the docker image to ECR repository
+      - docker push $account_id.dkr.ecr.$region.amazonaws.com/namespace/repo:latest
+      - echo "Docker image pushed to ECR repository successfully"
+
 artifacts:
   files:
     - target/*.war
