@@ -1,3 +1,4 @@
+<settings>
 <servers>
   <server>
     <id>codeartifact-domain-codeartifact-repository</id>
@@ -29,3 +30,4 @@
     <mirrorOf>*</mirrorOf>
   </mirror>
 </mirrors>
+</settings>

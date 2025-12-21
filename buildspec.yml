@@ -23,7 +23,7 @@ phases:
       - echo login in to ECR repository to push the docker image
       - aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $account_id.dkr.ecr.eu-north-1.amazonaws.com
       # command to pull the dependencies requiered to build from code artifact
-      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token  --tool maven --domain codeartifact-domain --domain-owner $account_id --region $region --query authorizationToken --output text`
+      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain codeartifact-domain --domain-owner $account_id --region $region --query authorizationToken --output text`
 
   build:
     commands:
