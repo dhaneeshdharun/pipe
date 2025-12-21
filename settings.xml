@@ -1,7 +1,7 @@
 <settings>
 <servers>
   <server>
-    <id>codeartifact-domain-codeartifact-repository</id>
+    <id>domain-terraform-repository-terraform</id>
     <username>aws</username>
     <password>${env.CODEARTIFACT_AUTH_TOKEN}</password>
   </server>
@@ -9,14 +9,14 @@
 
 <profiles>
   <profile>
-    <id>codeartifact-domain-codeartifact-repository</id>
+    <id>domain-terraform-repository-terraform</id>
     <activation>
       <activeByDefault>true</activeByDefault>
     </activation>
     <repositories>
       <repository>
-        <id>codeartifact-domain-codeartifact-repository</id>
-        <url>https://codeartifact-domain-978489150432.d.codeartifact.ap-northeast-1.amazonaws.com/maven/codeartifact-repository/</url>
+        <id>domain-terraform-repository-terraform</id>
+        <url>https://domain-terraform-978489150432.d.codeartifact.ap-northeast-1.amazonaws.com/maven/repository-terraform/</url>
       </repository>
     </repositories>
   </profile>
@@ -24,9 +24,9 @@
 
 <mirrors>
   <mirror>
-    <id>codeartifact-domain-codeartifact-repository</id>
-    <name>codeartifact-domain-codeartifact-repository</name>
-    <url>https://codeartifact-domain-978489150432.d.codeartifact.ap-northeast-1.amazonaws.com/maven/codeartifact-repository/</url>
+    <id>domain-terraform-repository-terraform</id>
+    <name>domain-terraform-repository-terraform</name>
+    <url>https://domain-terraform-978489150432.d.codeartifact.ap-northeast-1.amazonaws.com/maven/repository-terraform/</url>
     <mirrorOf>*</mirrorOf>
   </mirror>
 </mirrors>
