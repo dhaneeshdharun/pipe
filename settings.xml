@@ -1,33 +1,33 @@
 <settings>
 <servers>
   <server>
-    <id>domain-terraform-repository-terraform</id>
+    <id>dhaneesh-domain-dhaneesh-repository</id>
     <username>aws</username>
     <password>${env.CODEARTIFACT_AUTH_TOKEN}</password>
   </server>
 </servers>
-
-<profiles>
+ <profiles>
   <profile>
-    <id>domain-terraform-repository-terraform</id>
+    <id>dhaneesh-domain-dhaneesh-repository</id>
     <activation>
       <activeByDefault>true</activeByDefault>
     </activation>
     <repositories>
       <repository>
-        <id>domain-terraform-repository-terraform</id>
-        <url>https://domain-terraform-978489150432.d.codeartifact.ap-northeast-1.amazonaws.com/maven/repository-terraform/</url>
+        <id>dhaneesh-domain-dhaneesh-repository</id>
+        <url>https://dhaneesh-domain-978489150432.d.codeartifact.ap-northeast-1.amazonaws.com/maven/dhaneesh-repository/</url>
       </repository>
     </repositories>
   </profile>
 </profiles>
 
-<mirrors>
+  <mirrors>
   <mirror>
-    <id>domain-terraform-repository-terraform</id>
-    <name>domain-terraform-repository-terraform</name>
-    <url>https://domain-terraform-978489150432.d.codeartifact.ap-northeast-1.amazonaws.com/maven/repository-terraform/</url>
+    <id>dhaneesh-domain-dhaneesh-repository</id>
+    <name>dhaneesh-domain-dhaneesh-repository</name>
+    <url>https://dhaneesh-domain-978489150432.d.codeartifact.ap-northeast-1.amazonaws.com/maven/dhaneesh-repository/</url>
     <mirrorOf>*</mirrorOf>
   </mirror>
 </mirrors>
+  
 </settings>
